@@ -1,0 +1,147 @@
+body, html {
+	overflow-y: hidden;
+	max-height: 800px;
+}
+.forest {
+	background-image: url("images/forest.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-position: center;
+  	background-attachment: fixed;
+ 	min-width: 100%;
+ 	min-height: 850px;
+ 	margin-top: -25px;
+ 	padding: 50px 25px;
+}
+
+.intro {
+	background-image: url("images/intro.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-position: center;
+  	background-attachment: fixed;
+ 	min-width: 100%;
+ 	min-height: 850px;
+ 	margin-top: -25px;
+ 	padding: 50px 25px;
+
+}
+
+.intro-text {
+	 color: white;
+ text-align: center;
+}
+.intro-knight-button {
+	padding-left: 500px;
+	padding-top: 100px;
+}
+
+.forest-font {
+	color: white;
+}
+
+.beggar-img {
+	height: 350px;
+	width: 350px;
+}
+
+li {
+	list-style: none;
+}
+.forest-knight {
+	display: inline-block;
+}
+.knight-info {
+	color: yellow;
+	float: right;
+	display: inline-block;
+}
+
+.forest-info {
+	clear: both;
+}
+
+
+.successful-knight{
+	padding: 0px 200px;
+	height: 500px;
+	width: 850px;
+	margin-right: 200px;
+
+}
+
+/*.success-message {
+	padding-left: 150px;
+}*/
+.dragon {
+	background-image: url("images/dragon-cave.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-position: center;
+	min-width: 100%;
+ 	height: 650px;
+ 	margin-top: -25px;
+ 	padding: 50px 25px;
+ 	color: white;
+}
+li a {
+	cursor: pointer;
+	color: #4fcc2d;
+	text-decoration: none;
+}
+
+li a:hover{
+	cursor: pointer;
+	color: #5AE996;	
+	text-decoration: none;
+}
+
+/*.fighting-header h4{
+	line-height: 40px;
+}*/
+.knight-dragon-info {
+	display: inline-block;
+	line-height: 40px;
+	font-size: 18px;
+}
+
+.knight-dragon-info b {
+	margin-left: 12px;
+}
+
+.knight-actions {
+	display: inline-block;
+	float: right;
+	text-align: center;
+}
+
+.fighting-dragon {
+	position: absolute;
+	right: -2px;
+	top: 350px;
+	z-index: 99;
+}
+
+.defeated-knight {
+	background-color: black;
+	background-size: cover;
+	background-repeat: no-repeat;
+	/*-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;*/
+  	background-position: center;
+  	background-attachment: fixed;
+ 	min-width: 100%;
+ 	min-height: 850px;
+ 	margin-top: -25px;
+ 	padding: 50px 25px;
+}

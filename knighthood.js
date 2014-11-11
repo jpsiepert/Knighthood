@@ -4,7 +4,7 @@ var knightsPack = [5];
 //var pawnHP = 5; //right towards pawn
 
 var randomHit = function () {
-    return Math.floor(Math.random() * (7) + 1);
+    return Math.floor(Math.random() * (6) + 1);
 };
 var randomPotion = function (){
   var num = Math.floor(Math.random()*5) +1

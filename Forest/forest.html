@@ -1,0 +1,52 @@
+<div class="forest">
+<div class="forest-knight">
+	<img src="styles/images/forest-knight.png" />
+</div>
+
+<div class="knight-info">	
+		<h1>{{knight.name}}'s HP: {{knight.hp}}</h1>
+		
+		<h1> Potions in Inventory: {{knight.potions.length}}</h1>
+	</div>
+	<div class="forest-info">
+	
+	<h3 class="forest-font">There are Moblins and Beggars in this forest. Try not to get lost and be wary whom you encounter, it could be friend or foe!
+	</h3>
+	
+	</div>
+
+<div ng-show="directionSelect">
+	<h2 class="forest-font">Choose Your Direction</h2>
+	<select ng-model="direction" ng-change="changeDirection(direction)">
+		<option value="left">Left</option>
+		<option value="right">Right</option>
+	</select>
+</div>
+
+<div ng-show="stepsSelect">
+	<h2 class="forest-font">Choose how many steps you're willing to take!</h2>
+	<input type="number" ng-model="steps" min="1"/>
+	<button ng-click="stepsFn(steps)">Step!</button>
+</div>
+
+<div ng-show="beggar">
+	<h2 class="forest-font">You have met a beggar. The Beggar wants to give you a potion. Would you like to take it?</h2>
+	<select ng-model="potionChoice" ng-change="potion()">
+		<option value="yes">Yes</option>
+		<option value="no">No</option>
+	</select>
+	<img class="beggar-img" src="./styles/images/beggar.svg"/>
+	
+</div>
+<div ng-show="moblin">
+	<h2 class="forest-font">You have come across a Moblin! Roll the die. Even: you defeat the Moblin. Odd: the Moblin hits you</h2>
+	<button class="btn btn-danger" ng-click="roll()">Roll</button>
+
+</div>
+
+<div ng-show="lost">
+	<h2>Looks like you're lost. Try backtracking a bit.</h2>
+	<button class="btn btn-warning" ng-click="backTrack()">Back Track</button>
+</div>
+
+</div>

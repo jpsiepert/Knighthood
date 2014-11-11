@@ -1,0 +1,27 @@
+<div class="dragon">
+<div class="knight-dragon-info">
+	<h3 class="fighting-header">Time To Face The Dragon!</h3>
+	<b>
+	{{knight.name}}'s HP: {{knight.hp}}
+	</b>
+	<br />
+	<b>
+	Potions in Inventory: {{knight.potions.length}}
+	</b>
+	<br />
+	<b>
+	Dragon's HP: {{dragonHP}}
+	</b>
+</div>
+
+	<div class="knight-actions">
+	<h2>Select your Action</h2>
+	<ul>
+		<li><a ng-click="fight()">Fight</a></li>
+		<li><a ng-click="block()">Block</a></li>
+		<li><a ng-if="knight.potions.length > 0" ng-click="potion()">Potion</a></li>
+		<li><a ng-click="run()">Run</a></li>
+	</ul>
+	</div>
+<img class="fighting-dragon" src="styles/images/fighting-dragon.png" />
+</div>
