@@ -42,6 +42,10 @@ body, html {
 	padding-top: 100px;
 }
 
+.knight-name {
+	color: black;
+}
+
 .forest-font {
 	color: white;
 }
@@ -49,6 +53,15 @@ body, html {
 .beggar-img {
 	height: 350px;
 	width: 350px;
+}
+
+.click-roll:hover {
+	cursor: pointer;
+}
+
+.roll-die {
+	height: 100px;
+	width: 100px;
 }
 
 li {
@@ -105,9 +118,9 @@ li a:hover{
 	text-decoration: none;
 }
 
-/*.fighting-header h4{
-	line-height: 40px;
-}*/
+.fighting-header {
+	color: yellow;
+}
 .knight-dragon-info {
 	display: inline-block;
 	line-height: 40px;
@@ -144,4 +157,8 @@ li a:hover{
  	min-height: 850px;
  	margin-top: -25px;
  	padding: 50px 25px;
+}
+
+.success-button {
+	margin-left: 400px;
 }

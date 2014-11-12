@@ -9,6 +9,7 @@ app.factory("knightService", function(){
 
 		updateKnight: function(knight){
 			_knight = knight;
+
 		}
 	}
 })

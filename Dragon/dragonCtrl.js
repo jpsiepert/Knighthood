@@ -4,7 +4,9 @@ app.controller("dragonCtrl", function($scope, $location, knightService){
 	$scope.dragonHP = 100;
 	$scope.knight = knightService.getKnight();
 	$scope.actions = true;
-
+	$scope.hitPoints = false;
+	$scope.blockDragon = false;
+	$scope.drinkPotion = false;
 	// var checkPotions = function(){
 	// 	if($scope.knight.potions.length < 1){
 	// 		$scope.knight.potions = '';
@@ -24,36 +26,45 @@ app.controller("dragonCtrl", function($scope, $location, knightService){
     	return Math.floor(Math.random() * (6) + 1);
 	};
 	$scope.fight = function(){
-		
+		$scope.hitPoints = true;
+		$scope.blockDragon = false;
+		$scope.drinkPotion = false;
 		var a = dice();
 		if(a < 5){
-			alert("You successfully hit the dragon for " + (5 + a) + " hp!")
+			$scope.hit = "You successfully hit the dragon for " + (5 + a) + " hp!"
 			$scope.dragonHP -= 5 + a;
 		} else {
-			alert("You missed! The dragon attacked. Loss of " + (2 + a) + " hp")
+			$scope.hit = "You missed! The dragon attacked. Loss of " + (2 + a) + " hp"
 			$scope.knight.hp -= 2 + a;
 		}
 		knightService.updateKnight($scope.knight)
 		checkHP();
 	};
 
+
 	$scope.block = function(){
+		$scope.hitPoints = false;
+		$scope.drinkPotion = false;
+		$scope.blockDragon = true;
 		var b = dice();
 		if(b < 4){
-			alert("You blocked succesfully!");
+			$scope.blocked = "You blocked succesfully!";
 		} else {
-			alert("Your shield didn't quite cover you, loss of 2 hp");
+			$scope.blocked = "Your shield didn't quite cover you, loss of 2 hp";
 			$scope.knight.hp -= 2; 
 		}
 		checkHP();
 	}
 
 	$scope.potion = function(){
+		$scope.hitPoints = false;
+		$scope.blockDragon = false;
+		$scope.drinkPotion = true;
 		var c = $scope.knight.potions.shift();
 		if(c < 0){
-			alert("Curses!, potion took away " + Math.abs(c) + " hp!")
+			$scope.potionResult = "Curses!, potion took away " + Math.abs(c) + " hp!";
 		} else {
-			alert("Such Kindness, potion gave " + c + " hp!")
+			$scope.potionResult = "Such Kindness, potion gave " + c + " hp!";
 		}
 		$scope.knight.hp += c;
 

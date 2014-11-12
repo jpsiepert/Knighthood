@@ -5,8 +5,15 @@
 	<h4>Will you embark on this quest??</h4>
 </div>
 	<div class="intro-knight-button">
-		<button class="btn btn-danger" ng-click="beginGame()"> Enter Here!</button> 
+		<button class="btn btn-danger" ng-click="beginGame()"> Begin!</button> 
 
 		<img src="./styles/images/intro-knight.png"></img>
+	</div>
+	<div class="intro-text" ng-show="enterName">
+	<p>What are you called?</p>
+	<form>
+		<input class="knight-name" type="text" placeholder="Wesley" ng-model="Wesley"/>
+		<button class="btn btn-danger" ng-click="enterGame()">Enter Game!</button>
+		</form>
 	</div>
 	</div>

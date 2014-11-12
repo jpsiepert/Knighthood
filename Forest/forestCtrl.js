@@ -8,7 +8,11 @@ app.controller("forestCtrl", function($scope, $location, knightService){
 	$scope.beggar = false;
 	$scope.moblin = false;
 	$scope.lost = false;
-
+	$scope.potionConfirm = false;
+	$scope.potionDeclined = false;
+	$scope.moblinBattle = false;
+	$scope.showDice = false;
+	$scope.halfway = false;
 
 	var checkHP = function(){
 		if($scope.knight.hp < 1){
@@ -18,7 +22,7 @@ app.controller("forestCtrl", function($scope, $location, knightService){
 
 	checkHP();
 	
-	var pack = [];
+	//var pack = [];
 	var randomPotion = function (){
 	  var num = Math.floor(Math.random()*5) +1
 	  num *= Math.floor(Math.random() *2) == 1 ? 1: -1;
@@ -37,86 +41,85 @@ app.controller("forestCtrl", function($scope, $location, knightService){
 	};
 
 	$scope.stepsFn = function(){
-		//debugger;
+		$scope.steps = parseInt($scope.steps);
 		if($scope.direction === "left"){
 			$scope.knight.steps += $scope.steps;
-			console.log($scope.knight.steps);
+		}
+		if($scope.direction === "right"){
+			$scope.knight.steps -= $scope.steps;
+		}
 			if($scope.knight.steps < 50 && $scope.knight.steps > 0){
 				$scope.beggar = true;
 				$scope.stepsSelect= false;
 
-			} else if($scope.knight.steps  === 50){
-				alert("You are exactly half way there! Take a +5 potion!");
+			} else if($scope.knight.steps === 50){
+				$scope.halfway = true;
 				$scope.knight.potions.push(5);
-				$scope.stepsSelect = false;
-				$scope.directionSelect = true;
-				$scope.direction = '';
-				knightService.updateKnight($scope.knight)
 			} else if($scope.knight.steps > 50) {
 				$location.path("/dragon");
-			} else {
-				alert("You need to keep going left to get out of the pit of despair!");
-				$scope.stepsSelect = false;
-				$scope.directionSelect = true;
-				$scope.knight.steps += $scope.steps;
-				$scope.direction = '';
-			} 
-		}else {
-			$scope.knight.steps -= $scope.steps;
-			console.log($scope.knight.steps);
-			if($scope.knight.steps <= 0 && $scope.knight.steps >= -50){
-				$scope.moblin = true;
-				$scope.stepsSelect = false;
-
-			} else {
-				alert("You've entered the pit of despair! Watch out for the ROUS")
+			} else if($scope.knight.steps < -50) {
 				$scope.lost = true;
 				$scope.stepsSelect = false;
-				
-
-			}
+				$scope.directionSelect = false;
+				$scope.knight.steps += $scope.steps;
+				$scope.direction = '';
+			} else if($scope.knight.steps <= 0 && $scope.knight.steps >= -50){
+				$scope.moblin = true;
+				$scope.showDice = true;
+				$scope.stepsSelect = false;
+			} 
+			knightService.updateKnight($scope.knight)
 		}
-		//debugger;
-		knightService.updateKnight($scope.knight)
-	}
+	
+		$scope.continueHalfway = function(){
+			$scope.stepsSelect = false;
+			$scope.directionSelect = true;
+			$scope.direction = '';
+			$scope.halfway = false;
+		}
+
 
 
 	$scope.potion = function(){
-		//debugger;
 		if($scope.potionChoice === "yes"){
 			var x = randomPotion();
 			$scope.knight.potions.push(x);
-			alert("Potion added to your Pack");
-			$scope.directionSelect = true;
-			$scope.beggar = false;
-			$scope.direction = '';
-			$scope.potionChoice = '';
+			$scope.potionConfirm = true;
 			knightService.updateKnight($scope.knight);
 		} else {
-			$scope.directionSelect = true;
-			$scope.beggar = false;
-			$scope.direction = '';
-			$scope.potionChoice = '';
+			$scope.potionDeclined = true;
 		}
+	}
+
+	$scope.continuePotion = function (){
+		$scope.directionSelect = true;
+		$scope.beggar = false;
+		$scope.direction = '';
+		$scope.potionChoice = '';
+		$scope.potionConfirm = false;
+		$scope.potionDeclined = false;
 	}
 
 	$scope.roll = function(){
 		var x = dice();
-		alert("Roll was " + x)
+		$scope.diceRoll = "You have rolled a " + x + "! ";
+		$scope.moblinBattle = true;
 		if(x % 2 === 0){
-			alert("You have struck the moblin! He ran away in fear!");
-			// $scope.moblin = false;
-			// $scope.directionSelect = true;
-			// $scope.direction = '';
+			$scope.moblinAttack = "You have defeated the Moblins!";
+		
 		} else {
-			alert("You have been struck! Your HP has gone down by 2");
+			$scope.moblinAttack = "You have been struck! Your HP has gone down by 2";
 			$scope.knight.hp -= 2;
 			knightService.updateKnight($scope.knight)
-			// $scope.moblin = false;
-			// $scope.directionSelect = true;
-			// $scope.direction = '';
+		
 		}
+		$scope.showDice = false;
+		
+	}
+
+	$scope.continueMoblin = function(){
 			$scope.moblin = false;
+			$scope.moblinBattle = false;
 			$scope.directionSelect = true;
 			$scope.direction = '';
 	}

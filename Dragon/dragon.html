@@ -14,14 +14,30 @@
 	</b>
 </div>
 
+
+
 	<div class="knight-actions">
 	<h2>Select your Action</h2>
 	<ul>
-		<li><a ng-click="fight()">Fight</a></li>
-		<li><a ng-click="block()">Block</a></li>
-		<li><a ng-if="knight.potions.length > 0" ng-click="potion()">Potion</a></li>
-		<li><a ng-click="run()">Run</a></li>
+		<li><a ng-click="fight()">Fight Dragon</a></li>
+		<li><a ng-click="block()">Block Dragon</a></li>
+		<li><a ng-if="knight.potions.length > 0" ng-click="potion()">Take Potion</a></li>
+		<li><a ng-click="run()">Run From Dragon</a></li>
 	</ul>
 	</div>
+
+	<div ng-show="hitPoints">
+	<b class="fighting-header">{{hit}}</b>
+	
+</div>
+
+<div ng-show="blockDragon">
+	<b class="fighting-header">{{blocked}}</b>
+
+</div>
+
+<div ng-show="drinkPotion">
+	<b class="fighting-header">{{potionResult}}</b>
+</div>
 <img class="fighting-dragon" src="styles/images/fighting-dragon.png" />
 </div>
