@@ -64,6 +64,8 @@ app.controller("forestCtrl", function($scope, $location, knightService){
 				$scope.knightLeft = false;
 				$scope.knightRight = false;
 				$scope.knightCenter = true;
+				$scope.directionSelect = false;
+				$scope.stepsSelect = false;
 				$scope.halfway = true;
 				$scope.knight.potions.push(5);
 			} else if($scope.knight.steps > 50) {

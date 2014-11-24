@@ -74,6 +74,8 @@ app.controller("dragonCtrl", function($scope, $location, knightService){
 			$scope.knight.hp += c;
 
 			knightService.updateKnight($scope.knight)
+		} else {
+			$scope.potionResult = "Sorry, no potions in Inventory";
 		}
 	};
 
