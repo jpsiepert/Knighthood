@@ -15,5 +15,5 @@ app.config(function($routeProvider){
 		templateUrl: "success.html"
 	}).when("/defeat", {
 		templateUrl: "defeat.html"
-	})
+	}).otherwise("/")
 })
