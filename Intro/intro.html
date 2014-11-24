@@ -1,19 +1,29 @@
 <div class="intro">
-<div class="intro-text">
-<h3>Are you ready to receive your Knighthood??</h3>
-	<p> Deep in the Grosyps Thicket you make your way to find the dragon that has been terrozing the town for 5 years. You hope to defeat this dragon and return to the castle to receive your knighthood</p>
-	<h4>Will you embark on this quest??</h4>
-</div>
-	<div class="intro-knight-button">
-		<button class="btn btn-danger" ng-click="beginGame()"> Begin!</button> 
+	<div class="intro-text">
+	<h3>Are you ready to receive your Knighthood??</h3>
+		<p> Deep in the Grosyps Thicket you make your way to find the dragon that has been terrozing the town for 5 years. You hope to defeat this dragon and return to the castle to receive your knighthood</p>
+		<h4>Will you embark on this quest??</h4>
+	</div>
 
-		<img src="./styles/images/intro-knight.png"></img>
-	</div>
-	<div class="intro-text" ng-show="enterName">
-	<p>What are you called?</p>
-	<form>
-		<input class="knight-name" type="text" placeholder="Wesley" ng-model="Wesley"/>
-		<button class="btn btn-danger" ng-click="enterGame()">Enter Game!</button>
-		</form>
-	</div>
+		<div class='row'>
+			<div class='col-sm-6 col-sm-offset-5' > 
+				<!-- <div class="intro-knight-button"> -->
+					<button class="btn btn-danger" ng-click="beginGame()"> Begin!</button> 
+
+					<img src="./styles/images/intro-knight.png"></img>
+				<!-- </div> -->
+			</div>
+		</div>
+		
+		<div class='row'>
+			<div class='col-sm-12'>
+				<div class="intro-text" ng-show="enterName">
+					<p>What are you called?</p>
+					<form>
+						<input class="knight-name" type="text" placeholder="Wesley" ng-model="Wesley"/>
+						<button class="btn btn-danger" ng-click="enterGame()">Enter Game!</button>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>

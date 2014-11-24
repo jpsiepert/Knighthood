@@ -3,6 +3,9 @@ var app = angular.module("knighthood");
 app.controller("forestCtrl", function($scope, $location, knightService){
 	var steps = 0;
 	$scope.knight = knightService.getKnight();
+	$scope.knightLeft = false;
+	$scope.knightRight = false;
+	$scope.knightCenter = true;
 	$scope.directionSelect = true;
 	$scope.stepsSelect = false;
 	$scope.beggar = false;
@@ -21,7 +24,7 @@ app.controller("forestCtrl", function($scope, $location, knightService){
 	}
 
 	checkHP();
-	
+
 	//var pack = [];
 	var randomPotion = function (){
 	  var num = Math.floor(Math.random()*5) +1
@@ -37,15 +40,20 @@ app.controller("forestCtrl", function($scope, $location, knightService){
 		$scope.stepsSelect = true;
 		$scope.directionSelect = false;
 		$scope.direction = direction;
-		console.log($scope.direction);
 	};
 
 	$scope.stepsFn = function(){
 		$scope.steps = parseInt($scope.steps);
 		if($scope.direction === "left"){
+				$scope.knightLeft = true;
+			$scope.knightRight = false;
+			$scope.knightCenter = false;
 			$scope.knight.steps += $scope.steps;
 		}
 		if($scope.direction === "right"){
+			$scope.knightLeft = false;
+			$scope.knightRight = true;
+			$scope.knightCenter = false;
 			$scope.knight.steps -= $scope.steps;
 		}
 			if($scope.knight.steps < 50 && $scope.knight.steps > 0){
@@ -53,6 +61,9 @@ app.controller("forestCtrl", function($scope, $location, knightService){
 				$scope.stepsSelect= false;
 
 			} else if($scope.knight.steps === 50){
+				$scope.knightLeft = false;
+				$scope.knightRight = false;
+				$scope.knightCenter = true;
 				$scope.halfway = true;
 				$scope.knight.potions.push(5);
 			} else if($scope.knight.steps > 50) {
@@ -61,13 +72,13 @@ app.controller("forestCtrl", function($scope, $location, knightService){
 				$scope.lost = true;
 				$scope.stepsSelect = false;
 				$scope.directionSelect = false;
-				$scope.knight.steps += $scope.steps;
 				$scope.direction = '';
 			} else if($scope.knight.steps <= 0 && $scope.knight.steps >= -50){
 				$scope.moblin = true;
 				$scope.showDice = true;
 				$scope.stepsSelect = false;
 			} 
+			$scope.steps = '';
 			knightService.updateKnight($scope.knight)
 		}
 	

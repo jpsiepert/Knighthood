@@ -30,12 +30,15 @@ app.controller("dragonCtrl", function($scope, $location, knightService){
 		$scope.blockDragon = false;
 		$scope.drinkPotion = false;
 		var a = dice();
-		if(a < 5){
+		if(a < 4){
 			$scope.hit = "You successfully hit the dragon for " + (5 + a) + " hp!"
 			$scope.dragonHP -= 5 + a;
-		} else {
+		} else if(a > 4) {
 			$scope.hit = "You missed! The dragon attacked. Loss of " + (2 + a) + " hp"
 			$scope.knight.hp -= 2 + a;
+		} else {
+			$scope.hit = "Your sword barely grazed the dragon. Only hit dragon for 2hp";
+			$scope.dragonHP -=2;
 		}
 		knightService.updateKnight($scope.knight)
 		checkHP();
@@ -56,20 +59,22 @@ app.controller("dragonCtrl", function($scope, $location, knightService){
 		checkHP();
 	}
 
-	$scope.potion = function(){
+	$scope.potion = function(){		
+		
 		$scope.hitPoints = false;
 		$scope.blockDragon = false;
-		$scope.drinkPotion = true;
-		var c = $scope.knight.potions.shift();
-		if(c < 0){
-			$scope.potionResult = "Curses!, potion took away " + Math.abs(c) + " hp!";
-		} else {
-			$scope.potionResult = "Such Kindness, potion gave " + c + " hp!";
-		}
-		$scope.knight.hp += c;
+		$scope.drinkPotion = true
+		if($scope.knight.potions.length > 0){
+			var c = $scope.knight.potions.shift();
+			if(c < 0){
+				$scope.potionResult = "Curses!, potion took away " + Math.abs(c) + " hp!";
+			} else {
+				$scope.potionResult = "Such Kindness, potion gave " + c + " hp!";
+			}
+			$scope.knight.hp += c;
 
-		knightService.updateKnight($scope.knight)
-		//checkPotions();
+			knightService.updateKnight($scope.knight)
+		}
 	};
 
 	$scope.run = function(){

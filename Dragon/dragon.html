@@ -12,6 +12,18 @@
 	<b>
 	Dragon's HP: {{dragonHP}}
 	</b>
+	<div ng-show="hitPoints">
+			<b class="fighting-header">{{hit}}</b>
+	</div>
+
+	<div ng-show="blockDragon">
+		<b class="fighting-header">{{blocked}}</b>
+	</div>
+
+	<div ng-show="drinkPotion">
+		<b  ng-if="knigt.potions.length > 0" class="fighting-header">{{potionResult}}</b>
+		<b ng-if="knight.potions.length <= 0" class="fighting-header"> No Potions in Inventory</b>
+	</div>
 </div>
 
 
@@ -19,25 +31,23 @@
 	<div class="knight-actions">
 	<h2>Select your Action</h2>
 	<ul>
-		<li><a ng-click="fight()">Fight Dragon</a></li>
+		<b><li><a ng-click="fight()">Fight Dragon</a></li>
+		<br/>
 		<li><a ng-click="block()">Block Dragon</a></li>
-		<li><a ng-if="knight.potions.length > 0" ng-click="potion()">Take Potion</a></li>
-		<li><a ng-click="run()">Run From Dragon</a></li>
+		<br/>
+		<li><a ng-click="potion()">Take Potion</a></li>
+		<br/>
+		<li><a ng-click="run()">Run From Dragon</a></li></b>
 	</ul>
+		
 	</div>
 
-	<div ng-show="hitPoints">
-	<b class="fighting-header">{{hit}}</b>
 	
+<div class='row'>
+	<div class='col-sm-6 col-sm-offset-8'> 
+		<img class='fighting-dragon' src="styles/images/fighting-dragon.png" />
+	</div>
 </div>
 
-<div ng-show="blockDragon">
-	<b class="fighting-header">{{blocked}}</b>
 
-</div>
-
-<div ng-show="drinkPotion">
-	<b class="fighting-header">{{potionResult}}</b>
-</div>
-<img class="fighting-dragon" src="styles/images/fighting-dragon.png" />
 </div>

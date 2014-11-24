@@ -1,6 +1,7 @@
 body, html {
 	overflow-y: hidden;
 	max-height: 800px;
+	background-color: gray;
 }
 .forest {
 	background-image: url("images/forest.jpg");
@@ -35,7 +36,7 @@ body, html {
 
 .intro-text {
 	 color: white;
- text-align: center;
+ 	 text-align: center;
 }
 .intro-knight-button {
 	padding-left: 500px;
@@ -108,8 +109,9 @@ li {
 }
 li a {
 	cursor: pointer;
-	color: #4fcc2d;
+	color: yellow;
 	text-decoration: none;
+	font-weight: 155;
 }
 
 li a:hover{
@@ -122,6 +124,7 @@ li a:hover{
 	color: yellow;
 }
 .knight-dragon-info {
+	background-color: rgba(8, 117, 16, .6);
 	display: inline-block;
 	line-height: 40px;
 	font-size: 18px;
@@ -132,16 +135,17 @@ li a:hover{
 }
 
 .knight-actions {
+	background-color: rgba(8, 117, 16, .6);
 	display: inline-block;
 	float: right;
 	text-align: center;
+	padding: 5px;
 }
 
 .fighting-dragon {
-	position: absolute;
-	right: -2px;
-	top: 350px;
-	z-index: 99;
+	
+margin-top: 100px;
+margin-left: -100px;
 }
 
 .defeated-knight {
@@ -162,3 +166,12 @@ li a:hover{
 .success-button {
 	margin-left: 400px;
 }
+
+.defeat-image {
+	max-width: 100%;
+}
+
+.burnt-knight {
+	margin-top: 35px;
+}
+

@@ -1,13 +1,59 @@
 <div class="forest">
-<div class="forest-knight">
-	<img src="styles/images/forest-knight.png" />
+
+
+<div class="row">
+	<div ng-show='knightLeft' class='col-md-3'>
+		<div class="forest-knight">
+			<img src="styles/images/forest-knight.png" />
+		</div>
+	</div>
+
+
+
+	<div ng-show='knightCenter' class='col-md-3 col-md-offset-3'>
+		<div class="forest-knight">
+			<img src="styles/images/forest-knight.png" />
+		</div>
+	</div>
+
+
+
+	<div ng-show='knightRight' class='col-md-3 col-md-offset-5'>
+		<div class="forest-knight">
+			<img src="styles/images/forest-knight.png" />
+		</div>
+	</div>
+
+
+	<div ng-show='knightCenter' class='col-md-3 col-md-offset-3'>
+		<div class="knight-info">	
+			<h1>{{knight.name}}'s HP: {{knight.hp}}</h1>
+			
+			<h1> Potions in Inventory: {{knight.potions.length}}</h1>
+		</div>
+
+	</div>
+
+	<div ng-show='knightRight' class='col-md-3 col-md-offset-1'>
+		<div class="knight-info">	
+			<h1>{{knight.name}}'s HP: {{knight.hp}}</h1>
+			
+			<h1> Potions in Inventory: {{knight.potions.length}}</h1>
+		</div>
+
+	</div>
+
+	<div ng-show='knightLeft' class='col-md-3 col-md-offset-6'>
+		<div class="knight-info">	
+			<h1>{{knight.name}}'s HP: {{knight.hp}}</h1>
+			
+			<h1> Potions in Inventory: {{knight.potions.length}}</h1>
+		</div>
+
+	</div>
 </div>
 
-<div class="knight-info">	
-		<h1>{{knight.name}}'s HP: {{knight.hp}}</h1>
-		
-		<h1> Potions in Inventory: {{knight.potions.length}}</h1>
-	</div>
+
 	<div class="forest-info">
 	
 	<h3 class="forest-font">There are Moblins and Beggars in this forest. Try not to get lost and be wary whom you encounter, it could be friend or foe!
